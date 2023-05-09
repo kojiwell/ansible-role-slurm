@@ -28,7 +28,7 @@ $ grep " image:" molecule/default/molecule.yml
 Role Variables
 --------------
 
-Here's the default variables:
+Here's the list of the default variables:
 
 - slurm_version: 23.02.2
 - slurm_checksum: sha1:6356bc8cb2f9d93d34c2bab1c15f2b78db4c3e6f
