@@ -1,6 +1,7 @@
 galaxy_info:
   author: Koji Tanaka
   namespace: kojiwell
+  role_name: slurm
   description: Installs Slurm
   company: OIST
 
