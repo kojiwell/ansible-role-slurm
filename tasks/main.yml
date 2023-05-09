@@ -31,3 +31,10 @@
   args:
     chdir: /tmp/slurm-{{ slurm_version }}
     creates: "{{ slurm_prefix }}/bin"
+
+- name: install pam_slurm_adopt
+  shell: make install
+  args:
+    chdir: /tmp/slurm-{{ slurm_version }}/contribs/pam_slurm_adopt
+    creates: /lib64/security/pam_slurm_adopt.la
+  when: slurm_install_pam_slurm_adopt
