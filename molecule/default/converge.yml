@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include kojiwell.slurm"
+      include_role:
+        name: "kojiwell.slurm"

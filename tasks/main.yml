@@ -1,0 +1,13 @@
+---
+# tasks file for slurm
+
+- name: install httpd
+  ansible.builtin.dnf:
+    name: httpd
+    state: latest
+
+- name: start and enable httpd service
+  ansible.builtin.service:
+    name: httpd
+    state: started
+    enabled: yes
