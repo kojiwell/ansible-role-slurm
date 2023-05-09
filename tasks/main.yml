@@ -23,9 +23,9 @@
     dest: /tmp
     remote_src: yes
 
-- name: configure slurm-{{ slurm_version }}
+- name: install slurm-{{ slurm_version }} to {{ slurm_prefix }}
   shell: |
-    ./configure --prefix={{ slurm_prefix }}
+    ./configure --prefix={{ slurm_prefix }} {{ slurm_additional_configure_options }}
     make
     make install
   args:
