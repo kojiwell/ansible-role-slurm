@@ -1,10 +1,13 @@
 Ansible Role: Slurm
 =========
 
-An Ansible role that installs Slurm
+An Ansible role that installs Slurm.
+
+Requirements
+------------
 
 ``` shell
-# software versions
+# Tested software versions
 $ molecule --version
 molecule 5.0.1 using python 3.10 
     ansible:2.14.5
@@ -22,15 +25,13 @@ $ grep " image:" molecule/default/molecule.yml
     image: rockylinux:8.7
 ```
 
-Requirements
-------------
-
-TBD
-
 Role Variables
 --------------
 
-TBD
+- slurm_version: 23.02.2
+- slurm_checksum: sha1:6356bc8cb2f9d93d34c2bab1c15f2b78db4c3e6f
+- slurm_prefix: /opt/slurm-{{ slurm_version }}
+
 
 Dependencies
 ------------
@@ -54,4 +55,4 @@ MIT
 Author Information
 ------------------
 
-TBD
+Created and maintained by Koji Tanaka
