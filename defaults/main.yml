@@ -1,32 +1,33 @@
 ---
 # defaults file for slurm
 
-slurm_version: 23.02.2
+slurm_version: 23.02.6
 slurm_checksum: sha1:6356bc8cb2f9d93d34c2bab1c15f2b78db4c3e6f
 slurm_prefix: /opt/slurm-{{ slurm_version }}
 slurm_additional_configure_options: "--enable-pam --enable-x11"
 slurm_install_pam_slurm_adopt: True
 slurm_required_packages:
   - '@Development tools'
+  - gcc
+  - hwloc
+  - hwloc-libs
+  - libibmad
+  - libibumad 
+  - lua
+  - lua-libs
+  - man2html
+  - mariadb
+  - mariadb-devel
+  - munge
+  - munge-libs
+  - ncurses-devel
+  - numactl
+  - numactl-devel
   - openssl
   - openssl-devel
   - pam-devel
-  - numactl
-  - numactl-devel
-  - hwloc
-  - hwloc-libs
-  - lua
-  - lua-libs
-  - readline-devel
-  - rrdtool
-  - ncurses-devel
-  - man2html
-  - libibmad
-  - libibumad 
-  - gcc
-  - rpm-build
   - perl-ExtUtils-MakeMaker
-  - munge
-  - munge-libs
-  - mariadb
-  - mariadb-devel
+  - python3
+  - readline-devel
+  - rpm-build
+  - rrdtool
