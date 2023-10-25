@@ -6,6 +6,11 @@ slurm_checksum: sha1:3a376b165cf0ee1499ae87f5fcb4725d093c5fe7
 slurm_prefix: /opt/slurm-{{ slurm_version }}
 slurm_additional_configure_options: "--enable-pam --enable-x11"
 slurm_install_pam_slurm_adopt: True
+slurm_src_install: True
+slurm_rpmbuild: True
+slurm_rpm_dir: "{{ slurm_prefix }}/rpm"
+slurm_enabled_repos:
+  - powertools
 slurm_required_packages:
   - '@Development tools'
   - gcc
@@ -20,6 +25,7 @@ slurm_required_packages:
   - mariadb-devel
   - munge
   - munge-libs
+  - munge-devel
   - ncurses-devel
   - numactl
   - numactl-devel

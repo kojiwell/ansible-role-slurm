@@ -10,6 +10,7 @@
   dnf:
     name: "{{ slurm_required_packages }}"
     state: present
+    enablerepo: "{{ slurm_enabled_repos }}"
 
 - name: download slurm-{{ slurm_version }}
   ansible.builtin.get_url:
@@ -31,10 +32,25 @@
   args:
     chdir: /tmp/slurm-{{ slurm_version }}
     creates: "{{ slurm_prefix }}/bin"
+  when: slurm_src_install
 
 - name: install pam_slurm_adopt
   shell: make install
   args:
     chdir: /tmp/slurm-{{ slurm_version }}/contribs/pam_slurm_adopt
     creates: /lib64/security/pam_slurm_adopt.la
-  when: slurm_install_pam_slurm_adopt
+  when: (slurm_install_pam_slurm_adopt) and (slurm_src_install)
+
+- name: build rpm packages
+  shell: rpmbuild -ta slurm-{{ slurm_version }}.tar.bz2
+  args:
+    chdir: /tmp
+    creates: /root/rpmbuild/RPMS/{{ ansible_architecture }}
+  when: slurm_rpmbuild
+
+- name: copy rpm packages to {{ slurm_rpm_dir }}
+  copy:
+    remote_src: True
+    src: /root/rpmbuild/RPMS/{{ ansible_architecture }}/
+    dest: "{{ slurm_rpm_dir }}/"
+  when: slurm_rpmbuild
