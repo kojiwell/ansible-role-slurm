@@ -45,7 +45,7 @@
   shell: rpmbuild -ta slurm-{{ slurm_version }}.tar.bz2
   args:
     chdir: /tmp
-    creates: /root/rpmbuild/RPMS/{{ ansible_architecture }}
+    creates: /root/rpmbuild/RPMS/{{ ansible_architecture }}/slurm-*
   when: slurm_rpmbuild
 
 - name: copy rpm packages to {{ slurm_rpm_dir }}
