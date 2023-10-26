@@ -9,20 +9,14 @@ Requirements
 ``` shell
 # Tested software versions
 $ molecule --version
-molecule 5.0.1 using python 3.10 
-    ansible:2.14.5
-    azure:23.4.1 from molecule_plugins
-    containers:23.4.1 from molecule_plugins requiring collections: ansible.posix>=1.3.0 community.docker>=1.9.1 containers.podman>=1.8.1
-    delegated:5.0.1 from molecule
-    docker:23.4.1 from molecule_plugins requiring collections: community.docker>=3.0.2 ansible.posix>=1.4.0
-    ec2:23.4.1 from molecule_plugins
-    gce:23.4.1 from molecule_plugins requiring collections: google.cloud>=1.0.2 community.crypto>=1.8.0
-    podman:23.4.1 from molecule_plugins requiring collections: containers.podman>=1.7.0 ansible.posix>=1.3.0
-    vagrant:23.4.1 from molecule_plugins
+molecule 6.0.2 using python 3.11 
+    ansible:2.15.5
+    default:6.0.2 from molecule
+    docker:2.1.0 from molecule_docker requiring collections: community.docker>=3.0.2 ansible.posix>=1.4.0
 
 # Tested distro:version
 $ grep " image:" molecule/default/molecule.yml
-    image: rockylinux:8.7
+    image: rockylinux:8.8
 ```
 
 Role Variables
@@ -30,11 +24,14 @@ Role Variables
 
 Here's the list of the default variables:
 
-- slurm_version: `23.02.2`
-- slurm_checksum: `sha1:6356bc8cb2f9d93d34c2bab1c15f2b78db4c3e6f`
+- slurm_version: `23.02.6`
+- slurm_checksum: `sha1:3a376b165cf0ee1499ae87f5fcb4725d093c5fe7`
 - slurm_prefix: `/opt/slurm-{{ slurm_version }}`
 - slurm_additional_configure_options: `"--enable-pam --enable-x11"`
 - slurm_install_pam_slurm_adopt: `True`
+- slurm_src_install: `True`
+- slurm_rpmbuild: `True`
+- slurm_rpm_dir: `"{{ slurm_prefix }}/rpm"`
 
 Visit the Slurm website if you want to use different versions (and corresponding checsums).
 
