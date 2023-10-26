@@ -37,3 +37,4 @@ slurm_required_packages:
   - readline-devel
   - rpm-build
   - rrdtool
+  - createrepo

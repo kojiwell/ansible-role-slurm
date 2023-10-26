@@ -3,7 +3,7 @@ galaxy_info:
   namespace: kojiwell
   role_name: slurm
   description: Installs Slurm
-  company: OIST
+  company: DDN Japan
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
